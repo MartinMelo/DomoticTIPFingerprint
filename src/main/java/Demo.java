@@ -21,19 +21,23 @@ public class Demo {
         client.connect();
     }
     public void llegada() throws MqttException {
+        JSONObject json = new JSONObject();
+        json.put("huella", "sdhsadfhmoksdgjaspodyiahpshj");
         //Creo un mensaje.
         MqttMessage message = new MqttMessage();
         //Setteo el contenido del mensaje.
-        message.setPayload("huella".getBytes());
+        message.setPayload(json.toString().getBytes());
         //Publico el mensaje.
         client.publish(topic+"llegada", message);
     }
     public void partida() throws MqttException {
+        JSONObject json = new JSONObject();
+        json.put("huella", "sdhsadfhmoksdgjaspodyiahpshj");
         //Creo un mensaje.
         MqttMessage message = new MqttMessage();
 
         //Setteo el contenido del mensaje.
-        message.setPayload("Huella".getBytes());
+        message.setPayload(json.toString().getBytes());
         //Publico el mensaje.
         client.publish(topic + "partida", message);
     }
@@ -65,14 +69,11 @@ public class Demo {
     public static void main(String[] args) throws MqttException, InterruptedException {
         Demo demo = new Demo();
         demo.registrarEmpleadoConHuella();
-        for(int i=0; i<5;i++){
-            demo.llegada();
-            sleep(500);
-        }
-        for(int e=0; e<5;e++){
-            demo.partida();
-            sleep(500);
-        }
+        sleep(1000);
+        demo.llegada();
+        sleep(1000);
+        demo.partida();
+        sleep(1000);
         demo.desconectar();
     }
 }
