@@ -45,14 +45,13 @@ public class Demo {
         //Creo los datos truchos del empleado en un json.
         JSONObject json = new JSONObject();
         json.put("nombre", "Martin");
-        json.put("telefono", "12345678");
         json.put("huella", "sdhsadfhmoksdgjaspodyiahpshj");
         //Creo un mensaje.
         MqttMessage message = new MqttMessage();
         //Setteo el contenido del mensaje.
         message.setPayload(json.toString().getBytes());
         //Publico el mensaje.
-        client.publish(topic + "resgistrar", message);
+        client.publish(topic + "registrar", message);
     }
 
     /**
@@ -69,6 +68,10 @@ public class Demo {
     public static void main(String[] args) throws MqttException, InterruptedException {
         Demo demo = new Demo();
         demo.registrarEmpleadoConHuella();
+        sleep(1000);
+        demo.llegada();
+        sleep(1000);
+        demo.partida();
         sleep(1000);
         demo.llegada();
         sleep(1000);
