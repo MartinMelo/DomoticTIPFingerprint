@@ -22,17 +22,17 @@ public class Demo {
     }
     public void llegada() throws MqttException {
         JSONObject json = new JSONObject();
-        json.put("huella", "sdhsadfhmoksdgjaspodyiahpshj");
+        json.put("huella", "soyUnaHuellaFake");
         //Creo un mensaje.
         MqttMessage message = new MqttMessage();
         //Setteo el contenido del mensaje.
         message.setPayload(json.toString().getBytes());
         //Publico el mensaje.
-        client.publish(topic+"llegada", message);
+        client.publish(topic + "llegada", message);
     }
     public void partida() throws MqttException {
         JSONObject json = new JSONObject();
-        json.put("huella", "sdhsadfhmoksdgjaspodyiahpshj");
+        json.put("huella", "soyUnaHuellaFake");
         //Creo un mensaje.
         MqttMessage message = new MqttMessage();
 
@@ -45,7 +45,9 @@ public class Demo {
         //Creo los datos truchos del empleado en un json.
         JSONObject json = new JSONObject();
         json.put("nombre", "Martin");
-        json.put("huella", "sdhsadfhmoksdgjaspodyiahpshj");
+        json.put("apellido", "Melo");
+        json.put("huella", "soyUnaHuellaFake");
+        json.put("documento", "35401666");
         //Creo un mensaje.
         MqttMessage message = new MqttMessage();
         //Setteo el contenido del mensaje.
@@ -72,11 +74,6 @@ public class Demo {
         demo.llegada();
         sleep(1000);
         demo.partida();
-        sleep(1000);
-        demo.llegada();
-        sleep(1000);
-        demo.partida();
-        sleep(1000);
         demo.desconectar();
     }
 }
